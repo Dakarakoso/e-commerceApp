@@ -1,41 +1,40 @@
-.header {
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const HeaderContainer = styled.div`
     height: 70px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
-  
-    .logo-container {
-      height: 100%;
+`;
+
+export const LogoContainer = styled(Link)`
+     height: 100%;
       width: 70px;
       padding: 25px;
-    }
-    .logo-container:hover{
+
+      &:hover{
       background-color: white;
       opacity: 0.7;
       }
+`;
 
-  
-    .options {
+export const OptionsContainer = styled.div`
       width: 50%;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
-  
-      .option {
-        padding: 10px 15px;
-        cursor: pointer;
-      }
-      .option:hover {
+`;
+
+export const OptionLink = styled(Link)`
+   padding: 10px 15px;
+    cursor: pointer;
+
+    &:hover{
 font-weight: bold;
 opacity: 0.7;
-      }
-
-      .cart-icon:hover{
-      background-color: white;
-      opacity: 0.7;
-      }
     }
-  }
-  
+`;
+

@@ -3,7 +3,8 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
-import './sign-in.styles.scss';
+import { SignInContainer, SignInTitle, ButtonsBarContainer } from './sign-in.styles';
+
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -16,20 +17,20 @@ class SignIn extends React.Component {
         };
     }
 
-        handleSubmit = async event => {
-            event.preventDefault();
+    handleSubmit = async event => {
+        event.preventDefault();
 
-            const { email, password } = this.state;
+        const { email, password } = this.state;
 
-            try {
-                await auth.signInWithEmailAndPassword(email, password);
-                this.setState({email: '', password: ''})
-            } catch (error) {
-                console.log(error);
-            }
-            
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: '' })
+        } catch (error) {
+            console.log(error);
         }
-  
+
+    }
+
 
     handleChange = event => {
         const { value, name } = event.target;
@@ -40,8 +41,8 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <div className='sign-in'>
-                <h2>I already have an account</h2>
+            <SignInContainer>
+                <SignInTitle>I already have an account</SignInTitle>
                 <span>Sign In with your email and password</span>
 
                 <form onSubmit={this.handleSubmit}>
@@ -52,7 +53,7 @@ class SignIn extends React.Component {
                         value={this.state.email}
                         label='email'
                         required />
-                    
+
                     <FormInput
                         name='password'
                         type='password'
@@ -61,17 +62,17 @@ class SignIn extends React.Component {
                         label='password'
                         required
                     />
-                   
-                    <div className='buttons'>
-                        
-                    <CustomButton type='submit'>Sign In</CustomButton>
+
+                    <ButtonsBarContainer>
+
+                        <CustomButton type='submit'>Sign In</CustomButton>
                         <CustomButton type='button' onClick={signInWithGoogle} isGoogleSignIn>
-                        {' '}
-                        Sign in with Google{' '}
+                            {' '}
+                            Sign in with Google{' '}
                         </CustomButton>
-                    </div>
+                    </ButtonsBarContainer>
                 </form>
-            </div>
+            </SignInContainer>
         )
     }
 };

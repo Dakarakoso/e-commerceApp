@@ -5,7 +5,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
-import './sign-up.styless.scss';
+import { SignUpContainer, SignUpTitleContainer } from './sign-up.styles';
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class SignUp extends React.Component {
             confirmPassword: ''
         }
     }
-    
+
     handleSubmit = async event => {
         event.preventDefault();
 
@@ -53,10 +53,10 @@ class SignUp extends React.Component {
     }
 
     render() {
-        const {displayName, email, password, confirmPassword  } = this.state;
+        const { displayName, email, password, confirmPassword } = this.state;
         return (
-            <div className='sign-up'>
-                <h2 className='title'> I do not have an account</h2>
+            <SignUpContainer>
+                <SignUpTitleContainer> I do not have an account</SignUpTitleContainer>
                 <span> Sign up with your email and password</span>
                 <form className='sign-up-form' onSubmit={this.handleSubmit}>
                     <FormInput
@@ -67,7 +67,7 @@ class SignUp extends React.Component {
                         label='Display Name'
                         required
                     />
-                        
+
                     <FormInput
                         type='email'
                         name='email'
@@ -76,7 +76,7 @@ class SignUp extends React.Component {
                         label='Email'
                         required
                     />
-                        
+
                     <FormInput
                         type='password'
                         name='password'
@@ -85,7 +85,7 @@ class SignUp extends React.Component {
                         label='Password'
                         required
                     />
-                        
+
                     <FormInput
                         type='password'
                         name='confirmPassword'
@@ -96,7 +96,7 @@ class SignUp extends React.Component {
                     />
                     <CustomButton type='submit'>SIGN UP</CustomButton>
                 </form>
-            </div>
+            </SignUpContainer>
         )
     }
 };
